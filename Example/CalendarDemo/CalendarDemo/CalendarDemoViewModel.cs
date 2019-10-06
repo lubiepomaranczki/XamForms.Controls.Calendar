@@ -45,12 +45,6 @@ namespace CalendarDemo
         {
             var dates = new List<SpecialDate>();
 
-            var specialDate = new SpecialDate(new DateTime(2017, 04, 26));
-            specialDate.BackgroundColor = Color.Green;
-            specialDate.TextColor = Color.White;
-
-            dates.Add(specialDate);
-
             Attendances = new ObservableCollection<SpecialDate>(dates) {
                 new SpecialDate(DateTime.Now.AddDays(2))
                 {
