@@ -5,8 +5,10 @@ namespace XamForms.Controls
 {
     public class CalendarButton : Button
     {
-		public static readonly BindableProperty DateProperty =
-            BindableProperty.Create(nameof(Date), typeof(DateTime?), typeof(CalendarButton), null);
+        public static readonly BindableProperty DateProperty = BindableProperty.Create(
+            nameof(Date),
+            typeof(DateTime?),
+            typeof(CalendarButton), null);
 
         public DateTime? Date
         {
@@ -14,8 +16,11 @@ namespace XamForms.Controls
             set { SetValue(DateProperty, value); }
         }
 
-        public static readonly BindableProperty IsSelectedProperty =
-            BindableProperty.Create(nameof(IsSelected), typeof(bool), typeof(CalendarButton), false);
+        public static readonly BindableProperty IsSelectedProperty = BindableProperty.Create(
+            nameof(IsSelected),
+            typeof(bool),
+            typeof(CalendarButton),
+            false);
 
         public bool IsSelected
         {
@@ -23,8 +28,11 @@ namespace XamForms.Controls
             set { SetValue(IsSelectedProperty, value); }
         }
 
-        public static readonly BindableProperty IsOutOfMonthProperty =
-            BindableProperty.Create(nameof(IsOutOfMonth), typeof(bool), typeof(CalendarButton), false);
+        public static readonly BindableProperty IsOutOfMonthProperty = BindableProperty.Create(
+            nameof(IsOutOfMonth),
+            typeof(bool),
+            typeof(CalendarButton),
+            false);
 
         public bool IsOutOfMonth
         {
@@ -32,8 +40,11 @@ namespace XamForms.Controls
             set { SetValue(IsOutOfMonthProperty, value); }
         }
 
-        public static readonly BindableProperty TextWithoutMeasureProperty =
-            BindableProperty.Create(nameof(TextWithoutMeasure), typeof(string), typeof(Button), null);
+        public static readonly BindableProperty TextWithoutMeasureProperty = BindableProperty.Create(
+            nameof(TextWithoutMeasure),
+            typeof(string),
+            typeof(Button),
+            null);
 
         public string TextWithoutMeasure
         {
@@ -45,23 +56,29 @@ namespace XamForms.Controls
             set { SetValue(TextWithoutMeasureProperty, value); }
         }
 
-		public static readonly BindableProperty BackgroundPatternProperty =
-			BindableProperty.Create(nameof(BackgroundPattern), typeof(BackgroundPattern), typeof(Button), null);
+        public static readonly BindableProperty BackgroundPatternProperty = BindableProperty.Create(
+            nameof(BackgroundPattern),
+            typeof(BackgroundPattern),
+            typeof(Button),
+            null);
 
-		public BackgroundPattern BackgroundPattern
-		{
-			get { return (BackgroundPattern)GetValue(BackgroundPatternProperty); }
-			set { SetValue(BackgroundPatternProperty, value); }
-		}
+        public BackgroundPattern BackgroundPattern
+        {
+            get { return (BackgroundPattern)GetValue(BackgroundPatternProperty); }
+            set { SetValue(BackgroundPatternProperty, value); }
+        }
 
-		public static readonly BindableProperty BackgroundImageProperty =
-			BindableProperty.Create(nameof(BackgroundImage), typeof(FileImageSource), typeof(Button), null);
+        public static readonly BindableProperty BackgroundImageProperty = BindableProperty.Create(
+            nameof(BackgroundImage),
+            typeof(FileImageSource),
+            typeof(Button),
+            null);
 
-		public FileImageSource BackgroundImage
-		{
-			get { return (FileImageSource)GetValue(BackgroundImageProperty); }
-			set { SetValue(BackgroundImageProperty, value); }	
-		}
+        public FileImageSource BackgroundImage
+        {
+            get { return (FileImageSource)GetValue(BackgroundImageProperty); }
+            set { SetValue(BackgroundImageProperty, value); }
+        }
 
     }
 }
