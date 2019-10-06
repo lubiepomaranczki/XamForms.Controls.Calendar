@@ -100,7 +100,7 @@ namespace XamForms.Controls.iOS
             Control.SetBackgroundImage(image, UIControlState.Disabled);
         }
 
-        Task<UIImage> GetImage(FileImageSource image)
+        private Task<UIImage> GetImage(FileImageSource image)
         {
             var handler = new FileImageSourceHandler();
             return handler.LoadImageAsync(image);
@@ -138,14 +138,6 @@ namespace XamForms.Controls.iOS
             g.SelectFont("Helvetica", p.TextSize, CGTextEncoding.MacRoman);
             g.ShowTextAtPoint(x, Bounds.Height - y, p.Text);
             g.RestoreState();
-        }
-    }
-
-    public static class Calendar
-    {
-        public static void Init()
-        {
-            var d = "";
         }
     }
 }
