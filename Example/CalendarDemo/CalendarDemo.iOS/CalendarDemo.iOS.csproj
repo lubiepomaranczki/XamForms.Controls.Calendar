@@ -132,6 +132,9 @@
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <BundleResource Include="Resources\icon.png" />
+    <BundleResource Include="Resources\ic_calendarCircle%403x.png" />
+    <BundleResource Include="Resources\ic_calendarCircle%402x.png" />
+    <BundleResource Include="Resources\ic_calendarCircle.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
