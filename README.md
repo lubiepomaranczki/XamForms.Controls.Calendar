@@ -1,6 +1,7 @@
 ## Calendar Control Plugin for Xamarin.Forms
-
 A simple Calendar control for your Xamarin.Forms projects
+
+This is a fork repository of [a nuget made by RebeccaXam](https://github.com/rebeccaXam/XamForms.Controls.Calendar/). 
 
 #### Setup
 * Available on NuGet: https://www.nuget.org/packages/XamForms.Enhanced.Calendar/  [![NuGet](https://img.shields.io/nuget/v/XamForms.Enhanced.Calendar.svg?label=NuGet)](https://www.nuget.org/packages/XamForms.Enhanced.Calendar/)
@@ -9,9 +10,6 @@ A simple Calendar control for your Xamarin.Forms projects
 <p align="center">
   <img src="https://raw.githubusercontent.com/rebeccaXam/XamForms.Controls.Calendar/master/images/iOS.png" height="200"/>
   <img src="https://raw.githubusercontent.com/rebeccaXam/XamForms.Controls.Calendar/master/images/Android.png" height="200"/>
-  <img src="https://raw.githubusercontent.com/rebeccaXam/XamForms.Controls.Calendar/master/images/WinPhone.png" height="200"/>
-  <img src="https://raw.githubusercontent.com/rebeccaXam/XamForms.Controls.Calendar/master/images/Win8.png" height="200"/>
-  <img src="https://raw.githubusercontent.com/rebeccaXam/XamForms.Controls.Calendar/master/images/UWP.png" height="200"/>
   <img src="https://raw.githubusercontent.com/rebeccaXam/XamForms.Controls.Calendar/master/images/BackgroundPatternDroid.png" height="200"/>
   <img src="https://raw.githubusercontent.com/rebeccaXam/XamForms.Controls.Calendar/master/images/BackgroundpatterniOS.png" height="200"/>
 </p>
@@ -29,38 +27,13 @@ You must do this AFTER you call Xamarin.Forms.Init();
 ```
 [assembly:Xamarin.Forms.Platform.<Platform>.ExportRenderer(typeof(XamForms.Controls.CalendarButton), typeof(XamForms.Controls.<Platform>.CalendarButtonRenderer))]
 ```
-[Troubleshoot](https://github.com/rebeccaXam/XamForms.Controls.Calendar/wiki#troubleshoot)
 
 #### Usage
-Here is a sample:
-```
-new Calendar
-{
-  BorderColor = Color.Gay,
-  BorderWidth = 3,
-  BackgroundColor = Color.Gay,
-  StartDay = DayOfWeek.Sunday,
-  StartDate = DateTime.Now
-}
-```
-
-**XAML:**
-
-First add the xmlns namespace:
-```xml
-xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"
-```
-
-Then add the xaml:
-
-```xml
-<controls:Calendar Padding="10,0,10,0" StartDay="Monday" SelectedBorderWidth="4" DisabledBorderColor="Black" />
-```
-#### Documentation: [Wiki](https://github.com/rebeccaXam/XamForms.Controls.Calendar/wiki)
+There is a playground project in the solution. Please take a look there.
 
 #### Contributors
 * [rebeccaXam](https://github.com/rebeccaXam)
 * [lubiepomaranczki](https://github.com/lubiepomaranczki)
 
 #### License
-https://github.com/rebeccaXam/XamForms.Controls.Calendar/blob/master/LICENSE
+https://github.com/lubiepomaranczki/XamForms.Controls.Calendar/blob/develop/LICENSE
