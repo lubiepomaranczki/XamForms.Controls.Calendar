@@ -8,6 +8,7 @@ using Android.Graphics;
 using Xamarin.Forms;
 using System;
 using Xamarin.Forms.Platform.Android;
+using Android.Content;
 
 [assembly: ExportRenderer(typeof(CalendarButton), typeof(CalendarButtonRenderer))]
 namespace XamForms.Controls.Droid
@@ -15,9 +16,11 @@ namespace XamForms.Controls.Droid
     [Preserve(AllMembers = true)]
     public class CalendarButtonRenderer : ButtonRenderer
     {
+        private Context context;
+
         public CalendarButtonRenderer(Android.Content.Context context) : base(context)
         {
-
+            this.context = context;
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
@@ -137,7 +140,7 @@ namespace XamForms.Controls.Droid
                 var backgroundPattern = element.BackgroundPattern.Pattern[i];
                 if (!string.IsNullOrEmpty(backgroundPattern.Text))
                 {
-                    drawableList.Add(new TextDrawable(backgroundPattern.Color.ToAndroid(), backgroundPattern));
+                    drawableList.Add(new TextDrawable(context, backgroundPattern.Color.ToAndroid(), backgroundPattern));
                 }
                 else
                 {
