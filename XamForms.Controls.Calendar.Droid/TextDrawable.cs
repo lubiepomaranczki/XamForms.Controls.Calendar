@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Xamarin.Forms.Platform.Android;
@@ -8,11 +9,13 @@ namespace XamForms.Controls.Droid
     internal class TextDrawable : ColorDrawable
     {
         private readonly Paint paint;
+        private readonly Context context;
         private readonly Pattern pattern;
 
-        public TextDrawable(Color color, Pattern pattern)
+        public  TextDrawable(Context context, Color color, Pattern pattern)
             : base(color)
         {
+            this.context = context;
             this.pattern = pattern;
 
             paint = new Paint
@@ -27,7 +30,7 @@ namespace XamForms.Controls.Droid
         {
             base.Draw(canvas);
             paint.Color = pattern.TextColor.ToAndroid();
-            paint.TextSize = Android.Util.TypedValue.ApplyDimension(Android.Util.ComplexUnitType.Sp, pattern.TextSize > 0 ? Pattern.TextSize : 12, Forms.Context.Resources.DisplayMetrics);
+            paint.TextSize = Android.Util.TypedValue.ApplyDimension(Android.Util.ComplexUnitType.Sp, pattern.TextSize > 0 ? pattern.TextSize : 12, context.Resources.DisplayMetrics);
 
             var bounds = new Rect();
             paint.GetTextBounds(pattern.Text, 0, pattern.Text.Length, bounds);
