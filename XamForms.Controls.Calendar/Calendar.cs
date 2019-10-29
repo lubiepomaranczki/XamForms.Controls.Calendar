@@ -13,7 +13,8 @@ namespace XamForms.Controls
         List<Grid> MainCalendars;
         List<Label> TitleLabels;
         StackLayout MainView, ContentView;
-        public static double GridSpace = 0;
+
+        public static double GridSpace;
         public event EventHandler<EventArgs> OnStartRenderCalendar, OnEndRenderCalendar;
 
         public Calendar()
@@ -64,7 +65,6 @@ namespace XamForms.Controls
                 Children = { MonthNavigationLayout, ContentView }
             };
 
-
             TitleLeftArrow.Clicked += LeftArrowClickedEvent;
             TitleRightArrow.Clicked += RightArrowClickedEvent;
             dayLabels = new List<Label>(7);
@@ -78,7 +78,7 @@ namespace XamForms.Controls
             YearsColumn = 4;
         }
 
-        public bool IsRendering { get { return Content == null; } }
+        public bool IsRendering => Content == null;
 
         #region MinDate
 

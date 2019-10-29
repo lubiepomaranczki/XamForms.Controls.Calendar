@@ -73,11 +73,14 @@ namespace XamForms.Controls.iOS
 
         protected void DrawBackgroundPattern()
         {
-            var element = Element as CalendarButton;
-            if (element == null || element.BackgroundPattern == null || Control.Frame.Width == 0) return;
+            if (!(Element is CalendarButton element) || element.BackgroundPattern == null || Control.Frame.Width == 0)
+            {
+                return;
+            }
 
             UIImage image;
             UIGraphics.BeginImageContext(Control.Frame.Size);
+
             using (CGContext g = UIGraphics.GetCurrentContext())
             {
                 for (var i = 0; i < element.BackgroundPattern.Pattern.Count; i++)
@@ -95,6 +98,7 @@ namespace XamForms.Controls.iOS
 
                 image = UIGraphics.GetImageFromCurrentImageContext();
             }
+
             UIGraphics.EndImageContext();
             Control.SetBackgroundImage(image, UIControlState.Normal);
             Control.SetBackgroundImage(image, UIControlState.Disabled);
@@ -106,38 +110,43 @@ namespace XamForms.Controls.iOS
             return handler.LoadImageAsync(image);
         }
 
-        protected void DrawText(CGContext g, Pattern p, CGRect r)
+        protected void DrawText(CGContext graphicContext, Pattern pattern, CGRect rectangle)
         {
-            if (string.IsNullOrEmpty(p.Text)) return;
-            var bounds = p.Text.StringSize(UIFont.FromName("Helvetica", p.TextSize));
-            var al = (int)p.TextAlign;
-            var x = r.X; ;
+            if (string.IsNullOrEmpty(pattern.Text))
+            {
+                return;
+            }
+            var bounds = pattern.Text.StringSize(UIFont.FromName("Helvetica", pattern.TextSize));
+
+            var al = (int)pattern.TextAlign;
+            var x = rectangle.X;
 
             if ((al & 2) == 2) // center
             {
-                x = r.X + (int)Math.Round(r.Width / 2.0) - (int)Math.Round(bounds.Width / 2.0);
+                x = rectangle.X + (int)Math.Round(rectangle.Width / 2.0) - (int)Math.Round(bounds.Width / 2.0);
             }
             else if ((al & 4) == 4) // right
             {
-                x = (r.X + r.Width) - bounds.Width - 2;
+                x = (rectangle.X + rectangle.Width) - bounds.Width - 2;
             }
-            var y = r.Y + (int)Math.Round(bounds.Height / 2.0) + 2;
+            var y = rectangle.Y + (int)Math.Round(bounds.Height / 2.0) + 2;
             if ((al & 16) == 16) // middle
             {
-                y = r.Y + (int)Math.Ceiling(r.Height / 2.0) + (int)Math.Round(bounds.Height / 5.0);
+                y = rectangle.Y + (int)Math.Ceiling(rectangle.Height / 2.0) + (int)Math.Round(bounds.Height / 5.0);
             }
             else if ((al & 32) == 32) // bottom
             {
-                y = (r.Y + r.Height) - 2;
+                y = (rectangle.Y + rectangle.Height) - 2;
             }
-            g.SaveState();
-            g.TranslateCTM(0, Bounds.Height);
-            g.ScaleCTM(1, -1);
-            g.SetFillColor(p.TextColor.ToCGColor());
-            g.SetTextDrawingMode(CGTextDrawingMode.Fill);
-            g.SelectFont("Helvetica", p.TextSize, CGTextEncoding.MacRoman);
-            g.ShowTextAtPoint(x, Bounds.Height - y, p.Text);
-            g.RestoreState();
+
+            graphicContext.SaveState();
+            graphicContext.TranslateCTM(0, Bounds.Height);
+            graphicContext.ScaleCTM(1, -1);
+            graphicContext.SetFillColor(pattern.TextColor.ToCGColor());
+            graphicContext.SetTextDrawingMode(CGTextDrawingMode.Fill);
+            graphicContext.SelectFont("Helvetica", pattern.TextSize, CGTextEncoding.MacRoman);
+            graphicContext.ShowTextAtPoint(x, Bounds.Height - y, pattern.Text);
+            graphicContext.RestoreState();
         }
     }
 }

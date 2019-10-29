@@ -124,6 +124,8 @@
   <ItemGroup>
     <Compile Include="CalendarButtonRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Calendar.cs" />
+    <Compile Include="TextDrawable.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XamForms.Controls.Calendar\XamForms.Controls.Calendar.csproj">
