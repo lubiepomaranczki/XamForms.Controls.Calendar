@@ -32,6 +32,10 @@
                 SpecialDates="{Binding Attendances}"
                 DateCommand="{Binding DateChosen}">
             </controls:Calendar>
+            <Button
+                Grid.Row="2"
+                Command="{Binding SelectRandomDateCmd}"
+                Text="Change date"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

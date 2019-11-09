@@ -36,6 +36,15 @@ namespace CalendarDemo
             System.Diagnostics.Debug.WriteLine(obj as DateTime?);
         });
 
+        public ICommand SelectRandomDateCmd => new Command(SelectRandomDate);
+
+        private void SelectRandomDate(object obj)
+        {
+            var rand = new Random();
+            var newDay = rand.Next(1, 30);
+            Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, newDay);
+        }        
+
         public CalendarDemoViewModel()
         {
             Initialize();
