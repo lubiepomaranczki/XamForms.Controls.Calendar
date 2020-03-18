@@ -24,6 +24,8 @@ namespace CalendarDemo
             }
         }
 
+        public DateTime StartDate => DateTime.Now.AddMonths(-1);
+
         private ObservableCollection<SpecialDate> attendances;
         public ObservableCollection<SpecialDate> Attendances
         {
