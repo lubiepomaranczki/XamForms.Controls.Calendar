@@ -1,23 +1,31 @@
-pool:
-  vmImage: 'macos-latest'
+trigger:
+  branches:
+    include:
+    - develop
+  tags:
+    include:
+    - v*
 
-steps:
-- task: Bash@3
-  displayName: 'Cake Build script'
-  inputs:
-    targetType: filePath
-    filePath: ./build.sh
-    arguments: '--target=$(target) --configuration=$(configuration) --outputDirArgument=$(Build.ArtifactStagingDirectory)'
-    failOnStderr: true
+- job: iOS
+  pool:
+    vmImage: 'macOS-latest'
+  steps:
+  - task: Bash@3
+    displayName: 'Cake Build script'
+    inputs:
+      targetType: filePath
+      filePath: ./build.sh
+      arguments: '--target=$(target) --configuration=$(configuration) --outputDirArgument=$(Build.ArtifactStagingDirectory)'
+      failOnStderr: true
 
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(build.sourcesdirectory)'
-    Contents: '*.nupkg'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(build.sourcesdirectory)'
+      Contents: '*.nupkg'
+      TargetFolder: '$(build.artifactstagingdirectory)'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
-    ArtifactName: 'artifacts'
-    publishLocation: 'Container'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
+      ArtifactName: 'artifacts'
+      publishLocation: 'Container'
