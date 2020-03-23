@@ -4,7 +4,7 @@ trigger:
     - develop
   tags:
     include:
-    - v*
+    - '*'
 
 jobs:
 - job: iOS
