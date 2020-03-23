@@ -10,9 +10,9 @@ namespace XamForms.Controls
 	{
 		public int YearsRow { get; set; }
 		public int YearsColumn { get; set; }
-		List<View> normalView;
-		List<CalendarButton> yearButtons;
-		double w, h;
+		private List<View> normalView;
+        private List<CalendarButton> yearButtons;
+		private double width, height;
 
 		public DateTypeEnum CalendarViewType { get; protected set; }
 
@@ -22,8 +22,8 @@ namespace XamForms.Controls
 			{
 				yearButtons = new List<CalendarButton>();
 				normalView = new List<View>();
-				w = ContentView.Width / ShowNumOfMonths;
-				h = ContentView.Height / ShowNumOfMonths;
+				width = ContentView.Width / ShowNumOfMonths;
+				height = ContentView.Height / ShowNumOfMonths;
 				foreach (var child in ContentView.Children)
 				{
 					normalView.Add(child);
@@ -44,8 +44,8 @@ namespace XamForms.Controls
 			{
 				normalView = new List<View>();
 				yearButtons = new List<CalendarButton>();
-				w = ContentView.Width / ShowNumOfMonths;
-				h = ContentView.Height / ShowNumOfMonths;
+				width = ContentView.Width / ShowNumOfMonths;
+				height = ContentView.Height / ShowNumOfMonths;
 				foreach (var child in ContentView.Children)
 				{
 					normalView.Add(child);
@@ -92,7 +92,7 @@ namespace XamForms.Controls
 				{
 					for (int c = 0; c < 3; c++)
 					{
-						var b = new CalendarButton
+						var button = new CalendarButton
 						{
 							HorizontalOptions = LayoutOptions.CenterAndExpand,
 							VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -108,7 +108,7 @@ namespace XamForms.Controls
 							HeightRequest = ContentView.Height / 4 - BorderWidth
 						};
 
-						b.Clicked += (sender, e) =>
+						button.Clicked += (sender, e) =>
 						{
 							MonthYearButtonCommand?.Execute((sender as CalendarButton).Date.Value);
 							MonthYearButtonClicked?.Invoke(sender, new DateTimeEventArgs { DateTime = (sender as CalendarButton).Date.Value });
@@ -119,11 +119,11 @@ namespace XamForms.Controls
 							}
 						};
 
-						details.Children.Add(b, c, r);
+						details.Children.Add(button, c, r);
 					}
 				}
-				details.WidthRequest = w;
-				details.HeightRequest = h;
+				details.WidthRequest = width;
+				details.HeightRequest = height;
 				ContentView.Children.Add(details);
 				CalendarViewType = DateTypeEnum.Month;
 				TitleLeftArrow.IsVisible = false;
@@ -178,8 +178,8 @@ namespace XamForms.Controls
 						details.Children.Add(b, c, r);
 					}
 				}
-				details.WidthRequest = w;
-				details.HeightRequest = h;
+				details.WidthRequest = width;
+				details.HeightRequest = height;
 				ContentView.Children.Add(details);
 				CalendarViewType = DateTypeEnum.Year;
 				TitleLeftArrow.IsVisible = true;
