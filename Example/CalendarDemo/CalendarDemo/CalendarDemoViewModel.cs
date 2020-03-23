@@ -24,22 +24,7 @@ namespace CalendarDemo
             }
         }
 
-        private List<DateTime> _selectedDates;
-        public List<DateTime> SelectedDates
-        {
-            get
-            {
-                return _selectedDates;
-            }
-            set
-            {
-                _selectedDates = value;
-                NotifyPropertyChanged(nameof(SelectedDates));
-            }
-        }
-
         private ObservableCollection<SpecialDate> attendances;
-
         public ObservableCollection<SpecialDate> Attendances
         {
             get { return attendances; }
@@ -49,11 +34,6 @@ namespace CalendarDemo
         public ICommand DateChosen => new Command((obj) =>
         {
             System.Diagnostics.Debug.WriteLine(obj as DateTime?);
-        });
-
-        public ICommand TestCmd => new Command((obj) =>
-        {
-            var test = SelectedDates;
         });
 
         public CalendarDemoViewModel()
@@ -103,7 +83,6 @@ namespace CalendarDemo
                     BackgroundImage = ImageSource.FromFile("ic_calendarCircle.png") as FileImageSource
                 }
             };
-            SelectedDates = new List<DateTime>();
         }
     }
 }
