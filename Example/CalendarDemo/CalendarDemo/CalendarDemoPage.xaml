@@ -26,12 +26,15 @@
                 DisabledBorderColor="Black"
                 ShowNumberOfWeek="false"
                 StartDay="Monday"
+                MultiSelectDates="True"
+                SelectedDates="{Binding SelectedDates}"
                 TitleLabelTextColor="Purple"
                 TitleLeftArrowTextColor="Blue"
                 SelectedDate="{Binding Date}"
                 SpecialDates="{Binding Attendances}"
                 DateCommand="{Binding DateChosen}">
             </controls:Calendar>
+            <Button Text="Test" Grid.Row="2" Command="{Binding TestCmd}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
