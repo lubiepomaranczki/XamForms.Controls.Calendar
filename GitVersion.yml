@@ -1,0 +1,9 @@
+branches:
+  master:
+    regex: ^master$|^main$
+    mode: ContinuousDelivery    
+    increment: Patch  
+  develop:
+    regex: ^develop$    
+    mode: ContinuousDeployment
+    increment: Patch
