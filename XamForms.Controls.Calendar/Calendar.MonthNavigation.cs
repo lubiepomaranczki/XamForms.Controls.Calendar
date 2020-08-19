@@ -11,107 +11,121 @@ namespace XamForms.Controls
 		public static readonly BindableProperty TitleLabelHorizontalTextAlignmentProperty = BindableProperty.Create(nameof(TitleLabelHorizontalTextAlignment), typeof(TextAlignment), typeof(Calendar), default(TextAlignment),
 			propertyChanged: (bindable, oldValue, newValue) =>
 			{
-				(bindable as Calendar).TitleLabel.HorizontalTextAlignment = (TextAlignment)newValue;
-				(bindable as Calendar).TitleLabels?.ForEach(l => l.HorizontalTextAlignment = (TextAlignment)newValue);
+				var calendar = (Calendar) bindable;
+				calendar.TitleLabel.HorizontalTextAlignment = (TextAlignment)newValue;
+				calendar.TitleLabels?.ForEach(l => l.HorizontalTextAlignment = (TextAlignment)newValue);
 			});
 
 		public TextAlignment TitleLabelHorizontalTextAlignment
 		{
-			get { return TitleLabel.HorizontalTextAlignment; }
-			set { TitleLabel.HorizontalTextAlignment = value; }
+			get => TitleLabel.HorizontalTextAlignment;
+			set => TitleLabel.HorizontalTextAlignment = value;
 		}
 
 		public static readonly BindableProperty TitleLabelVerticalTextAlignmentProperty = BindableProperty.Create(nameof(TitleLabelVerticalTextAlignment), typeof(TextAlignment), typeof(Calendar), default(TextAlignment),
 		    propertyChanged: (bindable, oldValue, newValue) => {
-			(bindable as Calendar).TitleLabel.VerticalTextAlignment = (TextAlignment)newValue;
-			(bindable as Calendar).TitleLabels?.ForEach(l => l.VerticalTextAlignment = (TextAlignment)newValue);
+			    var calendar = (Calendar) bindable;
+				calendar.TitleLabel.VerticalTextAlignment = (TextAlignment)newValue;
+				calendar.TitleLabels?.ForEach(l => l.VerticalTextAlignment = (TextAlignment)newValue);
 		});
 
 		public TextAlignment TitleLabelVerticalTextAlignment
 		{
-			get { return TitleLabel.VerticalTextAlignment; }
-			set { TitleLabel.VerticalTextAlignment = value; }
+			get => TitleLabel.VerticalTextAlignment;
+			set => TitleLabel.VerticalTextAlignment = value;
 		}
 
 		public static readonly BindableProperty TitleLabelTextColorProperty = BindableProperty.Create(nameof(TitleLabelTextColor), typeof(Color), typeof(Calendar), default(Color),
-			  propertyChanged: (bindable, oldValue, newValue) => {
-			(bindable as Calendar).TitleLabel.TextColor = (Color)newValue;
-			(bindable as Calendar).TitleLabels?.ForEach(l => l.TextColor = (Color)newValue);
-		});
+			  propertyChanged: (bindable, oldValue, newValue) => 
+			  {
+				  var calendar = (Calendar) bindable;
+				  calendar.TitleLabel.TextColor = (Color)newValue;
+				  calendar.TitleLabels?.ForEach(l => l.TextColor = (Color)newValue);
+			  });
 
 		public Color TitleLabelTextColor
 		{
-			get { return TitleLabel.TextColor; }
-			set { TitleLabel.TextColor = value; }
+			get => TitleLabel.TextColor;
+			set => TitleLabel.TextColor = value;
 		}
 
 		public static readonly BindableProperty TitleLabelTextProperty = BindableProperty.Create(nameof(TitleLabelText), typeof(String), typeof(Calendar), default(String),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLabel.Text = (String)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleLabel.Text = (String)newValue);
 
 		public String TitleLabelText
 		{
-			get { return TitleLabel.Text; }
-			set { TitleLabel.Text = value; }
+			get => TitleLabel.Text;
+			set => TitleLabel.Text = value;
 		}
 
 		public static readonly BindableProperty TitleLabelFontFamilyProperty = BindableProperty.Create(nameof(TitleLabelFontFamily), typeof(String), typeof(Calendar), default(String),
-		   propertyChanged: (bindable, oldValue, newValue) => {
-			(bindable as Calendar).TitleLabel.FontFamily = (String)newValue;
-			(bindable as Calendar).TitleLabels?.ForEach(l => l.FontFamily = (String)newValue);
-		});
+		   propertyChanged: (bindable, oldValue, newValue) => 
+		   {
+			   var calendar = (Calendar) bindable;
+			   calendar.TitleLabel.FontFamily = (String)newValue;
+			   calendar.TitleLabels?.ForEach(l => l.FontFamily = (String)newValue);
+		   });
 
 		public String TitleLabelFontFamily
 		{
-			get { return TitleLabel.FontFamily; }
-			set { TitleLabel.FontFamily = value; }
+			get => TitleLabel.FontFamily;
+			set => TitleLabel.FontFamily = value;
 		}
 
 		public static readonly BindableProperty TitleLabelFontSizeProperty = BindableProperty.Create(nameof(TitleLabelFontSize), typeof(Double), typeof(Calendar), default(Double),
-			propertyChanged: (bindable, oldValue, newValue) => {
-			(bindable as Calendar).TitleLabel.FontSize = (Double)newValue;
-			(bindable as Calendar).TitleLabels?.ForEach(l => l.FontSize = (Double)newValue);
-		});
+			propertyChanged: (bindable, oldValue, newValue) => 
+			{
+				var calendar = (Calendar) bindable;
+				calendar.TitleLabel.FontSize = (double)newValue;
+				calendar.TitleLabels?.ForEach(l => l.FontSize = (double)newValue);
+			});
 
 		public Double TitleLabelFontSize
 		{
-			get { return TitleLabel.FontSize; }
-			set { TitleLabel.FontSize = value; }
+			get => TitleLabel.FontSize;
+			set => TitleLabel.FontSize = value;
 		}
 
 		public static readonly BindableProperty TitleLabelFontAttributesProperty = BindableProperty.Create(nameof(TitleLabelFontAttributes), typeof(FontAttributes), typeof(Calendar), default(FontAttributes),
-		   propertyChanged: (bindable, oldValue, newValue) => {
-			(bindable as Calendar).TitleLabel.FontAttributes = (FontAttributes)newValue;
-			(bindable as Calendar).TitleLabels?.ForEach(l => l.FontAttributes = (FontAttributes)newValue);
-		});
+		   propertyChanged: (bindable, oldValue, newValue) => 
+		   {
+			   var calendar = (Calendar) bindable;
+			   calendar.TitleLabel.FontAttributes = (FontAttributes)newValue;
+			   calendar.TitleLabels?.ForEach(l => l.FontAttributes = (FontAttributes)newValue);
+		   });
 
 		public FontAttributes TitleLabelFontAttributes
 		{
-			get { return TitleLabel.FontAttributes; }
-			set { TitleLabel.FontAttributes = value; }
+			get => TitleLabel.FontAttributes;
+			set => TitleLabel.FontAttributes = value;
 		}
 
 		public static readonly BindableProperty TitleLabelFormattedTextProperty = BindableProperty.Create(nameof(TitleLabelFormattedText), typeof(FormattedString), typeof(Calendar), default(FormattedString),
-		  propertyChanged: (bindable, oldValue, newValue) => {
-			(bindable as Calendar).TitleLabel.FormattedText = (FormattedString)newValue;
-			(bindable as Calendar).TitleLabels?.ForEach(l => l.FormattedText = (FormattedString)newValue);
-		});
+		  propertyChanged: (bindable, oldValue, newValue) => 
+		  {
+			  var calendar = (Calendar) bindable;
+			  calendar.TitleLabel.FormattedText = (FormattedString)newValue;
+			  calendar.TitleLabels?.ForEach(l => l.FormattedText = (FormattedString)newValue);
+		  });
 
 		public FormattedString TitleLabelFormattedText
 		{
-			get { return TitleLabel.FormattedText; }
-			set { TitleLabel.FormattedText = value; }
+			get => TitleLabel.FormattedText;
+			set => TitleLabel.FormattedText = value;
 		}
 
 		public static readonly BindableProperty TitleLabelLineBreakModeProperty = BindableProperty.Create(nameof(TitleLabelLineBreakMode), typeof(LineBreakMode), typeof(Calendar), default(LineBreakMode),
-		  propertyChanged: (bindable, oldValue, newValue) => {
-			(bindable as Calendar).TitleLabel.LineBreakMode = (LineBreakMode)newValue;
-			(bindable as Calendar).TitleLabels?.ForEach(l => l.LineBreakMode = (LineBreakMode)newValue);
-		});
+		  propertyChanged: (bindable, oldValue, newValue) => 
+		  {
+			  var calendar = (Calendar) bindable;
+			  calendar.TitleLabel.LineBreakMode = (LineBreakMode)newValue;
+			  calendar.TitleLabels?.ForEach(l => l.LineBreakMode = (LineBreakMode)newValue);
+		  });
 
 		public LineBreakMode TitleLabelLineBreakMode
 		{
-			get { return TitleLabel.LineBreakMode; }
-			set { TitleLabel.LineBreakMode = value; }
+			get => TitleLabel.LineBreakMode;
+			set => TitleLabel.LineBreakMode = value;
 		}
 
 		/// <summary>
@@ -124,79 +138,79 @@ namespace XamForms.Controls
 		#region TitleLeftArrow
 
 		public static readonly BindableProperty TitleLeftArrowTextProperty = BindableProperty.Create(nameof(TitleLeftArrowText), typeof(String), typeof(Calendar), default(String),
-									propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.Text = (String)newValue);
+									propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleLeftArrow.Text = (String)newValue);
 
 		public String TitleLeftArrowText
 		{
-			get { return TitleLeftArrow.Text; }
-			set { TitleLeftArrow.Text = value; }
+			get => TitleLeftArrow.Text;
+			set => TitleLeftArrow.Text = value;
 		}
 
 		public static readonly BindableProperty TitleLeftArrowTextColorProperty = BindableProperty.Create(nameof(TitleLeftArrowTextColor), typeof(Color), typeof(Calendar), default(Color),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.TextColor = (Color)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleLeftArrow.TextColor = (Color)newValue);
 
 		public Color TitleLeftArrowTextColor
 		{
-			get { return TitleLeftArrow.TextColor; }
-			set { TitleLeftArrow.TextColor = value; }
+			get => TitleLeftArrow.TextColor;
+			set => TitleLeftArrow.TextColor = value;
 		}
 
 		public static readonly BindableProperty TitleLeftArrowBackgroundColorProperty = BindableProperty.Create(nameof(TitleLeftArrowBackgroundColor), typeof(Color), typeof(Calendar), default(Color),
-			propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.BackgroundColor = (Color)newValue);
+			propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleLeftArrow.BackgroundColor = (Color)newValue);
 
 		public Color TitleLeftArrowBackgroundColor
 		{
-			get { return TitleLeftArrow.BackgroundColor; }
-			set { TitleLeftArrow.BackgroundColor = value; }
+			get => TitleLeftArrow.BackgroundColor;
+			set => TitleLeftArrow.BackgroundColor = value;
 		}
 
 		public static readonly BindableProperty TitleLeftArrowFontProperty = BindableProperty.Create(nameof(TitleLeftArrowFont), typeof(Font), typeof(Calendar), default(Font),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.Font = (Font)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleLeftArrow.Font = (Font)newValue);
 
 		public Font TitleLeftArrowFont
 		{
-			get { return TitleLeftArrow.Font; }
-			set { TitleLeftArrow.Font = value; }
+			get => TitleLeftArrow.Font;
+			set => TitleLeftArrow.Font = value;
 		}
 
 		public static readonly BindableProperty TitleLeftArrowFontFamilyProperty = BindableProperty.Create(nameof(TitleLeftArrowFontFamily), typeof(String), typeof(Calendar), default(String),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.FontFamily = (String)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleLeftArrow.FontFamily = (String)newValue);
 
 		public String TitleLeftArrowFontFamily
 		{
-			get { return TitleLeftArrow.FontFamily; }
-			set { TitleLeftArrow.FontFamily = value; }
+			get => TitleLeftArrow.FontFamily;
+			set => TitleLeftArrow.FontFamily = value;
 		}
 
 		public static readonly BindableProperty TitleLeftArrowFontSizeProperty = BindableProperty.Create(nameof(TitleLeftArrowFontSize), typeof(Double), typeof(Calendar), default(Double),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.FontSize = (Double)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleLeftArrow.FontSize = (Double)newValue);
 
 		public Double TitleLeftArrowFontSize
 		{
-			get { return TitleLeftArrow.FontSize; }
-			set { TitleLeftArrow.FontSize = value; }
+			get => TitleLeftArrow.FontSize;
+			set => TitleLeftArrow.FontSize = value;
 		}
 
 		public static readonly BindableProperty TitleLeftArrowFontAttributesProperty = BindableProperty.Create(nameof(TitleLeftArrowFontAttributes), typeof(FontAttributes), typeof(Calendar), default(FontAttributes),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.FontAttributes = (FontAttributes)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleLeftArrow.FontAttributes = (FontAttributes)newValue);
 
 		public FontAttributes TitleLeftArrowFontAttributes
 		{
-			get { return TitleLeftArrow.FontAttributes; }
-			set { TitleLeftArrow.FontAttributes = value; }
+			get => TitleLeftArrow.FontAttributes;
+			set => TitleLeftArrow.FontAttributes = value;
 		}
 
 		public static readonly BindableProperty TitleLeftArrowBorderWidthProperty = BindableProperty.Create(nameof(TitleLeftArrowBorderWidth), typeof(Double), typeof(Calendar), default(Double),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.BorderWidth = (Double)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleLeftArrow.BorderWidth = (Double)newValue);
 
 		public Double TitleLeftArrowBorderWidth
 		{
-			get { return TitleLeftArrow.BorderWidth; }
-			set { TitleLeftArrow.BorderWidth = value; }
+			get => TitleLeftArrow.BorderWidth;
+			set => TitleLeftArrow.BorderWidth = value;
 		}
 
 		public static readonly BindableProperty TitleLeftArrowBorderColorProperty = BindableProperty.Create(nameof(TitleLeftArrowBorderColor), typeof(Color), typeof(Calendar), default(Color),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.BorderColor = (Color)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleLeftArrow.BorderColor = (Color)newValue);
 
 		public Color TitleLeftArrowBorderColor
 		{
@@ -213,8 +227,21 @@ namespace XamForms.Controls
 			set { TitleLeftArrow.BorderRadius = value; }
 		}
 
-		public static readonly BindableProperty TitleLeftArrowImageProperty = BindableProperty.Create(nameof(TitleLeftArrowImage), typeof(FileImageSource), typeof(Calendar), default(FileImageSource),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLeftArrow.Image = (FileImageSource)newValue);
+		public static readonly BindableProperty TitleLeftArrowImageProperty = BindableProperty.Create(nameof(TitleLeftArrowImage),
+			typeof(FileImageSource), 
+			typeof(Calendar), 
+			default(FileImageSource), 
+			propertyChanged: TitleLeftArrowImagePropertyChanged);
+
+		private static void TitleLeftArrowImagePropertyChanged(BindableObject bindable, object oldvalue, object newValue)
+		{
+			var calendar = (Calendar) bindable; 
+			calendar.TitleLeftArrow.ImageSource = (FileImageSource) newValue;
+			if (!calendar.TitleLeftArrow.ImageSource.IsEmpty)
+			{
+				calendar.TitleLeftArrowText = string.Empty;
+			}
+		}
 
 		public FileImageSource TitleLeftArrowImage
 		{
@@ -277,7 +304,7 @@ namespace XamForms.Controls
 		}
 
 		public static readonly BindableProperty TitleRightArrowFontProperty = BindableProperty.Create(nameof(TitleRightArrowFont), typeof(Font), typeof(Calendar), default(Font),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleRightArrow.Font = (Font)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleRightArrow.Font = (Font)newValue);
 
 		public Font TitleRightArrowFont
 		{
@@ -286,7 +313,7 @@ namespace XamForms.Controls
 		}
 
 		public static readonly BindableProperty TitleRightArrowFontFamilyProperty = BindableProperty.Create(nameof(TitleRightArrowFontFamily), typeof(String), typeof(Calendar), default(String),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleRightArrow.FontFamily = (String)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleRightArrow.FontFamily = (String)newValue);
 
 		public String TitleRightArrowFontFamily
 		{
@@ -295,7 +322,7 @@ namespace XamForms.Controls
 		}
 
 		public static readonly BindableProperty TitleRightArrowFontSizeProperty = BindableProperty.Create(nameof(TitleRightArrowFontSize), typeof(Double), typeof(Calendar), default(Double),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleRightArrow.FontSize = (Double)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleRightArrow.FontSize = (Double)newValue);
 
 		public Double TitleRightArrowFontSize
 		{
@@ -304,7 +331,7 @@ namespace XamForms.Controls
 		}
 
 		public static readonly BindableProperty TitleRightArrowFontAttributesProperty = BindableProperty.Create(nameof(TitleRightArrowFontAttributes), typeof(FontAttributes), typeof(Calendar), default(FontAttributes),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleRightArrow.FontAttributes = (FontAttributes)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleRightArrow.FontAttributes = (FontAttributes)newValue);
 
 		public FontAttributes TitleRightArrowFontAttributes
 		{
@@ -313,7 +340,7 @@ namespace XamForms.Controls
 		}
 
 		public static readonly BindableProperty TitleRightArrowBorderWidthProperty = BindableProperty.Create(nameof(TitleRightArrowBorderWidth), typeof(Double), typeof(Calendar), default(Double),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleRightArrow.BorderWidth = (Double)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleRightArrow.BorderWidth = (Double)newValue);
 
 		public Double TitleRightArrowBorderWidth
 		{
@@ -322,7 +349,7 @@ namespace XamForms.Controls
 		}
 
 		public static readonly BindableProperty TitleRightArrowBorderColorProperty = BindableProperty.Create(nameof(TitleRightArrowBorderColor), typeof(Color), typeof(Calendar), default(Color),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleRightArrow.BorderColor = (Color)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleRightArrow.BorderColor = (Color)newValue);
 
 		public Color TitleRightArrowBorderColor
 		{
@@ -331,7 +358,7 @@ namespace XamForms.Controls
 		}
 
 		public static readonly BindableProperty TitleRightArrowBorderRadiusProperty = BindableProperty.Create(nameof(TitleRightArrowBorderRadius), typeof(Int32), typeof(Calendar), default(Int32),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleRightArrow.BorderRadius = (Int32)newValue);
+					propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleRightArrow.CornerRadius = (Int32)newValue);
 
 		public Int32 TitleRightArrowBorderRadius
 		{
@@ -339,9 +366,24 @@ namespace XamForms.Controls
 			set { TitleRightArrow.BorderRadius = value; }
 		}
 
-		public static readonly BindableProperty TitleRightArrowImageProperty = BindableProperty.Create(nameof(TitleRightArrowImage), typeof(FileImageSource), typeof(Calendar), default(FileImageSource),
-					propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleRightArrow.Image = (FileImageSource)newValue);
+		public static readonly BindableProperty TitleRightArrowImageProperty = BindableProperty.Create(
+			nameof(TitleRightArrowImage), 
+			typeof(FileImageSource), 
+			typeof(Calendar), 
+			default(FileImageSource),
+			propertyChanged: TitleRightArrowImagePropertyChanged);
 
+		
+		private static void TitleRightArrowImagePropertyChanged(BindableObject bindable, object oldvalue, object newValue)
+		{
+			var calendar = (Calendar) bindable; 
+			calendar.TitleRightArrow.ImageSource = (FileImageSource) newValue;
+			if (!calendar.TitleRightArrow.ImageSource.IsEmpty)
+			{
+				calendar.TitleRightArrowText = string.Empty;
+			}
+		}
+		
 		public FileImageSource TitleRightArrowImage
 		{
 			get { return TitleRightArrow.Image; }
@@ -400,7 +442,7 @@ namespace XamForms.Controls
 
 		public static readonly BindableProperty TitleLabelFormatProperty =
 			BindableProperty.Create(nameof(TitleLabelFormat), typeof(string), typeof(Calendar), "MMM yyyy",
-			                        propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).TitleLabel.Text = ((bindable as Calendar).StartDate).ToString((string)newValue));
+			                        propertyChanged: (bindable, oldValue, newValue) => ((Calendar) bindable).TitleLabel.Text = (((Calendar) bindable).StartDate).ToString((string)newValue));
 
 		/// <summary>
 		/// Gets or sets the format of the title in the month navigation.
@@ -408,8 +450,8 @@ namespace XamForms.Controls
 		/// <value>The title label format.</value>
 		public string TitleLabelFormat
 		{
-			get { return GetValue(TitleLabelFormatProperty) as string; }
-			set { SetValue(TitleLabelFormatProperty, value); }
+			get => GetValue(TitleLabelFormatProperty) as string;
+			set => SetValue(TitleLabelFormatProperty, value);
 		}
 
 		#endregion
@@ -420,11 +462,16 @@ namespace XamForms.Controls
 		BindableProperty.Create(nameof(EnableTitleMonthYearView), typeof(bool), typeof(Calendar), false,
 			propertyChanged: (bindable, oldValue, newValue) =>
 			{
-				(bindable as Calendar).TitleLabel.GestureRecognizers.Clear();
-				if (!(bool)newValue) return;
+				var calendar = (Calendar) bindable;
+				calendar.TitleLabel.GestureRecognizers.Clear();
+				if (!(bool)newValue)
+				{
+					return;
+				}
+				
 				var gr = new TapGestureRecognizer();
-				gr.Tapped += (sender, e) => (bindable as Calendar).NextMonthYearView();
-				(bindable as Calendar).TitleLabel.GestureRecognizers.Add(gr);
+				gr.Tapped += (sender, e) => calendar.NextMonthYearView();
+				calendar.TitleLabel.GestureRecognizers.Add(gr);
 			});
 
 		/// <summary>
@@ -433,8 +480,8 @@ namespace XamForms.Controls
 		/// <value>The weekdays show.</value>
 		public bool EnableTitleMonthYearView
 		{
-			get { return (bool)GetValue(EnableTitleMonthYearDetailsProperty); }
-			set { SetValue(EnableTitleMonthYearDetailsProperty, value); }
+			get => (bool)GetValue(EnableTitleMonthYearDetailsProperty);
+			set => SetValue(EnableTitleMonthYearDetailsProperty, value);
 		}
 
 		#endregion
@@ -448,8 +495,8 @@ namespace XamForms.Controls
 
 		public ICommand RightArrowCommand
 		{
-			get { return (ICommand)GetValue(RightArrowCommandProperty); }
-			set { SetValue(RightArrowCommandProperty, value); }
+			get => (ICommand)GetValue(RightArrowCommandProperty);
+			set => SetValue(RightArrowCommandProperty, value);
 		}
 
 		protected void RightArrowClickedEvent(object s, EventArgs a)
@@ -480,8 +527,8 @@ namespace XamForms.Controls
 
 		public ICommand LeftArrowCommand
 		{
-			get { return (ICommand)GetValue(LeftArrowCommandProperty); }
-			set { SetValue(LeftArrowCommandProperty, value); }
+			get => (ICommand)GetValue(LeftArrowCommandProperty);
+			set => SetValue(LeftArrowCommandProperty, value);
 		}
 
 		protected void LeftArrowClickedEvent(object s, EventArgs a)
@@ -502,6 +549,7 @@ namespace XamForms.Controls
 		{
 		    StartDate = new DateTime(StartDate.Year, StartDate.Month, 1).AddMonths(-ShowNumOfMonths);
 		}
+		
 		#endregion
 	}
 }
