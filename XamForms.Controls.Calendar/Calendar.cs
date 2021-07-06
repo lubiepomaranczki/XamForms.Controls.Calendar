@@ -274,7 +274,7 @@ namespace XamForms.Controls
             BindableProperty.Create(nameof(HideSpecialOutOfMonth), 
                 typeof(bool), 
                 typeof(Calendar), 
-                true);
+                false);
 
         public bool HideSpecialOutOfMonth
         {
