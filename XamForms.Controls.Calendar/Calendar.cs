@@ -267,12 +267,27 @@ namespace XamForms.Controls
 
         #endregion
 
+        /// <summary>
+        /// Sets special date visiblity when out of month
+        /// </summary>
+        public static readonly BindableProperty HideSpecialOutOfMonthProperty =
+            BindableProperty.Create(nameof(HideSpecialOutOfMonth), 
+                typeof(bool), 
+                typeof(Calendar), 
+                true);
+
+        public bool HideSpecialOutOfMonth
+        {
+            get { return (bool)GetValue(HideSpecialOutOfMonthProperty); }
+            set { SetValue(HideSpecialOutOfMonthProperty, value); }
+        }
+        
+        
         #region DatesFontAttributes
 
         public static readonly BindableProperty DatesFontAttributesProperty =
             BindableProperty.Create(nameof(DatesFontAttributes), typeof(FontAttributes), typeof(Calendar), FontAttributes.None,
                                     propertyChanged: (bindable, oldValue, newValue) => (bindable as Calendar).ChangeDatesFontAttributes((FontAttributes)newValue, (FontAttributes)oldValue));
-
         protected void ChangeDatesFontAttributes(FontAttributes newValue, FontAttributes oldValue)
         {
             if (newValue == oldValue) return;

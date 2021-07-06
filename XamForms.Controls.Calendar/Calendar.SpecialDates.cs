@@ -27,6 +27,11 @@ namespace XamForms.Controls
 
 		protected void SetButtonSpecial(CalendarButton button, SpecialDate special)
 		{
+			if (button.IsOutOfMonth && HideSpecialOutOfMonth)
+			{
+				return;
+			}
+			
 			Device.BeginInvokeOnMainThread(() =>
 			{
 				button.BackgroundPattern = special.BackgroundPattern;
