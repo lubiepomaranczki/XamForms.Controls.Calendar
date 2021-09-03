@@ -13,9 +13,11 @@ namespace XamForms.Controls
             BindableProperty.Create(nameof(SelectedDate), typeof(DateTime?), typeof(Calendar), null, BindingMode.TwoWay,
                 propertyChanged: (bindable, oldValue, newValue) =>
                 {
-                    if ((bindable as Calendar).ChangeSelectedDate(newValue as DateTime?))
+                    var calendar = (Calendar) bindable;
+
+                    if (calendar.ChangeSelectedDate(newValue as DateTime?))
                     {
-                        (bindable as Calendar).SelectedDate = null;
+                        calendar.SelectedDate = null;
                     }
                 });
 
@@ -25,8 +27,8 @@ namespace XamForms.Controls
         /// <value>The selected date.</value>
         public DateTime? SelectedDate
         {
-            get { return (DateTime?)GetValue(SelectedDateProperty); }
-            set { SetValue(SelectedDateProperty, value.HasValue ? value.Value.Date : value); }
+            get => (DateTime?)GetValue(SelectedDateProperty);
+            set => SetValue(SelectedDateProperty, value.HasValue ? value.Value.Date : value);
         }
 
         #endregion
@@ -248,18 +250,25 @@ namespace XamForms.Controls
 
         protected bool ChangeSelectedDate(DateTime? date, bool clicked = true)
         {
-            if (!date.HasValue) return false;
-
             if (!MultiSelectDates)
             {
                 buttons.FindAll(b => b.IsSelected).ForEach(b => ResetButton(b));
                 SelectedDates.Clear();
             }
+            
+            if (!date.HasValue)
+            {
+                return false;
+            }
 
             AddDateIfNotExist(SelectedDate.Value.Date);
 
             var button = buttons.Find(b => b.Date.HasValue && b.Date.Value.Date == date.Value.Date && b.IsEnabled);
-            if (button == null) return false;
+            if (button == null)
+            {
+                return false;
+            }
+            
             var deselect = button.IsSelected;
             if (button.IsSelected)
             {
@@ -268,14 +277,16 @@ namespace XamForms.Controls
             else
             {
                 AddDateIfNotExist(SelectedDate.Value.Date);
-                var spD = SpecialDates?.FirstOrDefault(s => s.Date.Date == button.Date.Value.Date);
-                SetButtonSelected(button, spD);
+                var specialDate = SpecialDates?.FirstOrDefault(s => s.Date.Date == button.Date.Value.Date);
+                SetButtonSelected(button, specialDate);
             }
+            
             if (clicked)
             {
                 DateClicked?.Invoke(this, new DateTimeEventArgs { DateTime = SelectedDate.Value });
                 DateCommand?.Execute(SelectedDate.Value);
             }
+            
             return deselect;
         }
 
