@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
 
@@ -46,14 +47,14 @@ namespace XamForms.Controls
             set { SetValue(MultiSelectDatesProperty, value); }
         }
 
-        public static readonly BindableProperty SelectedDatesProperty = BindableProperty.Create(nameof(SelectedDates), typeof(List<DateTime>), typeof(Calendar), new List<DateTime>(1));
+        public static readonly BindableProperty SelectedDatesProperty = BindableProperty.Create(nameof(SelectedDates), typeof(ObservableCollection<DateTime>), typeof(Calendar), new ObservableCollection<DateTime>());
         /// <summary>
         /// Gets the selected dates when MultiSelectDates is true
         /// </summary>
         /// <value>The selected date.</value>
-        public List<DateTime> SelectedDates
+        public ObservableCollection<DateTime> SelectedDates
         {
-            get { return (List<DateTime>)GetValue(SelectedDatesProperty); }
+            get { return (ObservableCollection<DateTime>)GetValue(SelectedDatesProperty); }
             protected set { SetValue(SelectedDatesProperty, value); }
         }
 
