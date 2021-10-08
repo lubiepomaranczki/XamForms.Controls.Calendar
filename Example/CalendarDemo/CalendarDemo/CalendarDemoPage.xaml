@@ -12,22 +12,20 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Label
-                Grid.Row="0"
-                Text="Hi there 👋"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                VerticalOptions="End"
-                Margin="20" />
             <controls:Calendar
                 Grid.Row="1"
                 Padding="10,0,10,0"
-                SelectedBorderWidth="4"
+                MonthNavigationShow="False"
+                CellHeight="80"
+                SelectedBorderWidth="2"
+                SelectedBackgroundColor="#CCE4E8"
+                SelectedBorderColor="#CCE4E8"
                 DisabledBorderColor="Black"
+                BorderColor="White"
+                BorderWidth="1"
+                WeekdaysTextColor="Black"
                 ShowNumberOfWeek="false"
                 StartDay="Monday"
-                TitleLabelTextColor="Purple"
-                TitleLeftArrowTextColor="Blue"
                 SelectedDate="{Binding Date}"
                 SpecialDates="{Binding Attendances}"
                 DateCommand="{Binding DateChosen}">

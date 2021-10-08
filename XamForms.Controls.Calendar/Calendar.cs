@@ -174,6 +174,20 @@ namespace XamForms.Controls
             set { SetValue(BorderWidthProperty, value); }
         }
 
+        public static readonly BindableProperty CellHeightProperty =
+            BindableProperty.Create(nameof(CellHeight),
+                typeof(double),
+                typeof(Calendar));
+
+        /// <summary>
+        /// This is not bindable so changing it dynamically won't change anything
+        /// </summary>
+        public double CellHeight
+        {
+            get { return (double)GetValue(CellHeightProperty); }
+            set { SetValue(CellHeightProperty, value); }
+        }
+
         #endregion
 
         #region OuterBorderWidth
@@ -495,7 +509,7 @@ namespace XamForms.Controls
                 {
                     for (int c = 0; c < 7; c++)
                     {
-                        buttons.Add(new CalendarButton
+                        var calendarButton = new CalendarButton
                         {
                             BorderRadius = 0,
                             BorderWidth = BorderWidth,
@@ -507,7 +521,13 @@ namespace XamForms.Controls
                             FontFamily = DatesFontFamily,
                             HorizontalOptions = LayoutOptions.FillAndExpand,
                             VerticalOptions = LayoutOptions.FillAndExpand
-                        });
+                        };
+                        if (CellHeight != default)
+                        {
+                            calendarButton.HeightRequest = CellHeight;
+                        }
+
+                        buttons.Add(calendarButton);
                         var b = buttons.Last();
                         b.Clicked += DateClickedEvent;
                         mainCalendar.Children.Add(b, c, r);

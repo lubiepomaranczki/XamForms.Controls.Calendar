@@ -44,28 +44,31 @@ namespace CalendarDemo
         private void Initialize()
         {
             var dates = new List<SpecialDate>();
+            
+            var grayColor = Color.FromHex("#CCE5E5E5");
 
             Attendances = new ObservableCollection<SpecialDate>(dates) {
-                new SpecialDate(DateTime.Now.AddDays(2))
-                {
-                     BackgroundColor = Color.Green,
-                     TextColor = Color.Accent,
-                     BorderColor = Color.Lime,
-                     BorderWidth = 8,
-                     Selectable = true },
                 new SpecialDate(DateTime.Now.AddDays(3))
                 {
-                    BackgroundColor = Color.Green,
-                    TextColor = Color.Blue,
                     Selectable = true,
                     BackgroundPattern = new BackgroundPattern(1)
                     {
                         Pattern = new List<Pattern>
                         {
-                            new Pattern{ WidthPercent = 1f, HightPercent = 0.25f, Color = Color.Red},
-                            new Pattern{ WidthPercent = 1f, HightPercent = 0.25f, Color = Color.Purple},
-                            new Pattern{ WidthPercent = 1f, HightPercent = 0.25f, Color = Color.Green},
-                            new Pattern{ WidthPercent = 1f, HightPercent = 0.25f, Color = Color.Yellow,Text = "Test", TextColor=Color.DarkBlue, TextSize=11, TextAlign=TextAlign.Middle}
+                            new Pattern{ WidthPercent = 1f, HightPercent = 0.7f, Color = Color.White},
+                            new Pattern{ WidthPercent = 1f, HightPercent = 0.3f, Color = Color.Yellow,Text = "Vacation", TextColor=Color.DarkBlue, TextSize=11, TextAlign=TextAlign.Middle},
+                        }
+                    }
+                },
+                new SpecialDate(DateTime.Now.AddDays(5))
+                {
+                    Selectable = true,
+                    BackgroundPattern = new BackgroundPattern(1)
+                    {
+                        Pattern = new List<Pattern>
+                        {
+                            new Pattern{ WidthPercent = 1f, HightPercent = 0.7f, Color = Color.White},
+                            new Pattern{ WidthPercent = 1f, HightPercent = 0.3f, Color = Color.LightGreen, Text = "Absence", TextColor=Color.DarkBlue, TextSize=11, TextAlign=TextAlign.Middle},
                         }
                     }
                 },
@@ -76,12 +79,75 @@ namespace CalendarDemo
                     {
                         Pattern = new List<Pattern>
                         {
-                            new Pattern{ WidthPercent = 1f, HightPercent = 0.5f, Color = Color.Red},
-                            new Pattern{ WidthPercent = 1f, HightPercent = 0.5f, Color = Color.Purple},
+                            new Pattern{ WidthPercent = 1f, HightPercent = 0.7f, Color = grayColor},
+                            new Pattern{ WidthPercent = 1f, HightPercent = 0.15f, Color = Color.Yellow, Text = "Vacation", TextColor=Color.DarkBlue, TextSize=9, TextAlign=TextAlign.Middle},
+                            new Pattern{ WidthPercent = 1f, HightPercent = 0.15f, Color = Color.LightGreen, Text = "Absence", TextColor=Color.DarkBlue, TextSize=9, TextAlign=TextAlign.Middle},
                         }
-                    },
-                    BackgroundImage = ImageSource.FromFile("ic_calendarCircle.png") as FileImageSource
-                }
+                    }
+                },
+                new SpecialDate(DateTime.Now.AddDays(6))
+                {
+                    Selectable = true,
+                    BackgroundPattern = new BackgroundPattern(1)
+                    {
+                        Pattern = new List<Pattern>
+                        {
+                            new Pattern{ WidthPercent = 1f, HightPercent = 0.7f, Color = grayColor},
+                            new Pattern{ WidthPercent = 1f, HightPercent = 0.3f, Color = Color.LightGreen, Text = "Absence", TextColor=Color.DarkBlue, TextSize=11, TextAlign=TextAlign.Middle},
+                        }
+                    }
+                },
+                new SpecialDate(DateTime.Now)
+                {
+                    Selectable = true,
+                    TextColor = Color.Red,
+                    FontAttributes = FontAttributes.Bold
+                },
+                new SpecialDate(DateTime.Now.AddDays(1))
+                {
+                    Selectable = true,
+                    BackgroundPattern = new BackgroundPattern(1)
+                    {
+                        Pattern = new List<Pattern>
+                        {
+                            new Pattern{ WidthPercent = 1f, HightPercent = 1f, Color = grayColor},
+                        }
+                    }
+                },
+                new SpecialDate(DateTime.Now.AddDays(2))
+                {
+                    Selectable = true,
+                    BackgroundPattern = new BackgroundPattern(1)
+                    {
+                        Pattern = new List<Pattern>
+                        {
+                            new Pattern{ WidthPercent = 1f, HightPercent = 1f, Color = grayColor},
+                        }
+                    }
+                },
+                new SpecialDate(DateTime.Now.AddDays(8))
+                {
+                    Selectable = true,
+                    BackgroundPattern = new BackgroundPattern(1)
+                    {
+                        Pattern = new List<Pattern>
+                        {
+                            new Pattern{ WidthPercent = 1f, HightPercent = 1f, Color = grayColor},
+                        }
+                    }
+                },
+                new SpecialDate(DateTime.Now.AddDays(9))
+                {
+                    Selectable = true,
+                    BackgroundPattern = new BackgroundPattern(1)
+                    {
+                        Pattern = new List<Pattern>
+                        {
+                            new Pattern{ WidthPercent = 1f, HightPercent = 1f, Color = grayColor},
+                        }
+                    }
+                },
+                
             };
         }
     }
