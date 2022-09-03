@@ -282,12 +282,12 @@ namespace XamForms.Controls
         #endregion
 
         /// <summary>
-        /// Sets special date visiblity when out of month
+        /// Sets special date visibility when out of month
         /// </summary>
         public static readonly BindableProperty HideSpecialOutOfMonthProperty =
-            BindableProperty.Create(nameof(HideSpecialOutOfMonth), 
-                typeof(bool), 
-                typeof(Calendar), 
+            BindableProperty.Create(nameof(HideSpecialOutOfMonth),
+                typeof(bool),
+                typeof(Calendar),
                 false);
 
         public bool HideSpecialOutOfMonth
@@ -295,8 +295,23 @@ namespace XamForms.Controls
             get { return (bool)GetValue(HideSpecialOutOfMonthProperty); }
             set { SetValue(HideSpecialOutOfMonthProperty, value); }
         }
-        
-        
+
+        /// <summary>
+        /// Sets date visibility when out of month
+        /// </summary>
+        public static readonly BindableProperty ShouldShowCurrentMonthDatesProperty =
+            BindableProperty.Create(nameof(ShouldShowCurrentMonthDates),
+                typeof(bool),
+                typeof(Calendar),
+                false);
+
+        public bool ShouldShowCurrentMonthDates
+        {
+            get { return (bool)GetValue(ShouldShowCurrentMonthDatesProperty); }
+            set { SetValue(ShouldShowCurrentMonthDatesProperty, value); }
+        }
+
+
         #region DatesFontAttributes
 
         public static readonly BindableProperty DatesFontAttributesProperty =
@@ -589,7 +604,10 @@ namespace XamForms.Controls
 
                     buttons[i].IsOutOfMonth = !(beginOfMonth && !endOfMonth);
                     buttons[i].IsEnabled = ShowNumOfMonths == 1 || !buttons[i].IsOutOfMonth;
-
+                    if (ShouldShowCurrentMonthDates)
+                    {
+                        buttons[i].IsVisible = !buttons[i].IsOutOfMonth;
+                    }
                     SpecialDate sd = null;
                     if (SpecialDates != null)
                     {
@@ -669,4 +687,3 @@ namespace XamForms.Controls
         public event EventHandler<DateTimeEventArgs> DateClicked;
     }
 }
-
