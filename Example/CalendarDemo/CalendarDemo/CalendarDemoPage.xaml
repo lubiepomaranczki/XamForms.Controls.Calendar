@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="CalendarDemo.CalendarDemoPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"
-    x:Class="CalendarDemo.CalendarDemoPage">
+    xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar">
     <ContentPage.Content>
         <Grid Margin="16,44,16,16">
             <Grid.RowDefinitions>
@@ -15,21 +15,21 @@
             <controls:Calendar
                 Grid.Row="1"
                 Padding="10,0,10,0"
-                MonthNavigationShow="False"
-                CellHeight="80"
-                SelectedBorderWidth="2"
-                SelectedBackgroundColor="#CCE4E8"
-                SelectedBorderColor="#CCE4E8"
-                DisabledBorderColor="Black"
                 BorderColor="White"
                 BorderWidth="1"
-                WeekdaysTextColor="Black"
-                ShowNumberOfWeek="false"
-                StartDay="Monday"
+                CellHeight="80"
+                DateCommand="{Binding DateChosen}"
+                DisabledBorderColor="Black"
+                MonthNavigationShow="True"
+                SelectedBackgroundColor="#CCE4E8"
+                SelectedBorderColor="#CCE4E8"
+                SelectedBorderWidth="2"
                 SelectedDate="{Binding Date}"
+                ShouldShowCurrentMonthDates="True"
+                ShowNumberOfWeek="false"
                 SpecialDates="{Binding Attendances}"
-                DateCommand="{Binding DateChosen}">
-            </controls:Calendar>
+                StartDay="Monday"
+                WeekdaysTextColor="Black" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
